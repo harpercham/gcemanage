@@ -1,0 +1,170 @@
+
+  .bg-3 { 
+    background-image: url('https://webgradients.com/public/webgradients_png/051%20February%20Ink.png');
+}
+
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+  }
+
+  .active>a {
+    color: #1abc9c !important;;
+  }
+
+
+  
+  table { 
+    width: 80%; 
+    border-collapse: collapse; 
+    margin:0px auto;
+    }
+  
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: rgb(233, 244, 250); 
+    }
+  
+  th { 
+    background: #64807b; 
+    color: white; 
+    font-weight: bold; 
+    }
+  
+  td, th { 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    font-size: 16px;
+    }
+  
+  /* 
+  Max width before this PARTICULAR table gets nasty
+  This query will take effect for any screen smaller than 760px
+  and also iPads specifically.
+  */
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+  
+    table { 
+        width: 100%; 
+    }
+  
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr { border: 1px solid #ccc; }
+    
+    td { 
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee; 
+      position: relative;
+      padding-left: 10%; 
+    }
+  
+    td:before { 
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%; 
+      padding-right: 10px; 
+      white-space: nowrap;
+      /* Label the data */
+      content: attr(data-column);
+  
+      color: #000;
+      font-weight: bold;
+    }
+  
+  }
+
+
+
+
+  #wrap {
+    width: 80%;
+    margin: 0 auto;
+}
+ 
+ 
+
+
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#calendar {
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
