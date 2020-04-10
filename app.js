@@ -10,7 +10,8 @@ var flash = require('connect-flash');
 var userInViews = require('./lib/middleware/userInViews');
 var authRouter = require('./routes/auth');
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var homeRouter = require('./routes/home');
+var cr8projRouter = require('./routes/cr8proj');
 
 dotenv.config();
 
@@ -21,7 +22,7 @@ var strategy = new Auth0Strategy(
     clientID: 'sEFrC5YbPK4G42i29MzbUb18vlT8AgZj',
     clientSecret: 'dUoB0Kebm-IXrD0H0YZ-gDRL6JfG_6YYnrfLElus4Tibf1Qi8ouE8Yy5XamDYy3X',
     callbackURL:
-      process.env.AUTH0_CALLBACK_URL || 'http://157.230.32.252:3000/callback'
+      process.env.AUTH0_CALLBACK_URL ||  "http://localhost:3000/callback"
   },
   function (accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
@@ -94,7 +95,9 @@ app.use(function (req, res, next) {
 app.use(userInViews());
 app.use('/', authRouter);
 app.use('/', indexRouter);
-app.use('/', usersRouter);
+app.use('/', homeRouter);
+app.use('/', cr8projRouter);
+
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {

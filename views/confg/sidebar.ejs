@@ -1,0 +1,34 @@
+<nav>
+
+  <header>
+    <span></span>
+    John Doe
+    <a href="logout"></a>
+  </header>
+
+  <ul>
+
+    <li>GCE-MANAGE</li>
+    <li><a href='home'>Home</a></li>
+    <li class="dropdown">
+      <a class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+        All Projects
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li> <a href="cr8proj"> Create Project </a> </li>
+        <% for(i=1; i<rows.length; i++) { %>
+        <li onclick="location.href='home';" style="cursor:pointer;" hover='red' id=<%='name'.concat(i) %>>
+          <%= rows[i][5] %></li>
+        <% } %>
+
+
+      </ul>
+    </li>
+    <li><a>HR</a></li>
+    <li><a>Store</a></li>
+
+  </ul>
+
+</nav>
+<link rel="stylesheet" href="./stylesheets/sidebar.css">
