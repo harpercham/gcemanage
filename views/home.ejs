@@ -2,15 +2,17 @@
 <html lang="en">
 
 <head>
-	<%- include ('confg/head/home') %>
+	<%- include ('confg/head/navbar') %>
 
 </head>
 
 <body>
-	<%- include ('confg/sidebar') %>
-	user
+	<div class="grid">
+		<%- include ('confg/sidebar') %>
+		<%- include ('confg/topbar') %>
+	</div>
 
 </body>
-<%- include ('confg/script/home') %>
+<%- include ('confg/script/navbar') %>
 
 </html>

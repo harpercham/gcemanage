@@ -2,16 +2,19 @@
 <html lang="en">
 
 <head>
-	<%- include ('confg/head/cr8proj') %>
+	<%- include ('confg/head/navbar') %>
 
 </head>
 
 <body>
-	<%- include ('confg/sidebar') %>
-	
-	<%- include ('partials/create') %>
+	<div class="grid">
+		<%- include ('confg/sidebar') %>
+		<%- include ('confg/topbar') %>
+		<%- include ('partials/create') %>
+
+	</div>
 
 </body>
-<%- include ('confg/script/cr8proj') %>
+<%- include ('confg/script/navbar') %>
 
 </html>

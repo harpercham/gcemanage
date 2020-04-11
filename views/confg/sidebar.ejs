@@ -1,34 +1,63 @@
-<nav>
+<!-- sidebar -->
+<aside class="sidenav">
+  <div class="sidenav__brand">
+    <i class="fas fa-feather-alt sidenav__brand-icon"></i>
+    <a class="sidenav__brand-link" href="#">GCE<span class="text-light">Manage</span></a>
+    <i class="fas fa-times sidenav__brand-close"></i>
+  </div>
+  <div class="sidenav__profile">
+    <div class="sidenav__profile-avatar"></div>
+    <div class="sidenav__profile-title text-light">User Name</div>
+  </div>
+  <div class="row row--align-v-center row--align-h-center">
+    <ul class="navList">
+      <li>
+        <div class="navList__subheading row row--align-v-center">
+          <span class="navList__subheading-icon"><i class="far fa-angry"></i></span>
+          <span class="navList__subheading-title">Dashbaord</span>
+        </div>
+      </li>
+      <li>
+        <div class="navList__subheading row row--align-v-center">
+          <span class="navList__subheading-icon"><i class="far fa-angry"></i></span>
+          <span class="navList__subheading-title"><a id="test">All Projects</a></span>
+        </div>
+        <ul class="subList subList--hidden">
+          <li class="subList__item"> <a href="cr8proj" style="color:yellowgreen"> Create Project <i
+                class="fas fa-plus"></i></a>
+          </li>
+          <% for(i=1; i<rows.length; i++) { %>
+          <li class="subList__item" id=<%='project'.concat(i) %>>
+            <%= rows[i][5] %></li>
+          <% } %>
+        </ul>
+      </li>
+      <li>
+        <div class="navList__subheading row row--align-v-center">
+          <span class="navList__subheading-icon"><i class="far fa-angry"></i></span>
+          <span class="navList__subheading-title">Documentation</span>
+        </div>
+        <ul class="subList subList--hidden">
+          <li class="subList__item">a</li>
+          <li class="subList__item">b</li>
+          <li class="subList__item">c</li>
+          <li class="subList__item">d</li>
+          <li class="subList__item">e</li>
+          <li class="subList__item">f</li>
+          <li class="subList__item">g</li>
+          <li class="subList__item">h</li>
+          <li class="subList__item">Insurance</li>
+        </ul>
+      </li>
+      <li>
+        <div class="navList__subheading row row--align-v-center">
+          <span class="navList__subheading-icon"><i class="far fa-angry"></i></span>
+          <span class="navList__subheading-title">Store</span>
+        </div>
+      </li>
 
-  <header>
-    <span></span>
-    John Doe
-    <a href="logout"></a>
-  </header>
+    </ul>
+  </div>
+</aside>
 
-  <ul>
-
-    <li>GCE-MANAGE</li>
-    <li><a href='home'>Home</a></li>
-    <li class="dropdown">
-      <a class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-        All Projects
-        <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu">
-        <li> <a href="cr8proj"> Create Project </a> </li>
-        <% for(i=1; i<rows.length; i++) { %>
-        <li onclick="location.href='home';" style="cursor:pointer;" hover='red' id=<%='name'.concat(i) %>>
-          <%= rows[i][5] %></li>
-        <% } %>
-
-
-      </ul>
-    </li>
-    <li><a>HR</a></li>
-    <li><a>Store</a></li>
-
-  </ul>
-
-</nav>
-<link rel="stylesheet" href="./stylesheets/sidebar.css">
+<!-- sidebar -->
