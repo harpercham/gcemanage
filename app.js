@@ -12,6 +12,7 @@ var authRouter = require('./routes/auth');
 var indexRouter = require('./routes/index');
 var homeRouter = require('./routes/home');
 var cr8projRouter = require('./routes/cr8proj');
+var projectRouter = require('./routes/project');
 
 dotenv.config();
 
@@ -22,7 +23,7 @@ var strategy = new Auth0Strategy(
     clientID: 'sEFrC5YbPK4G42i29MzbUb18vlT8AgZj',
     clientSecret: 'dUoB0Kebm-IXrD0H0YZ-gDRL6JfG_6YYnrfLElus4Tibf1Qi8ouE8Yy5XamDYy3X',
     callbackURL:
-      process.env.AUTH0_CALLBACK_URL ||  "http://localhost:3000/callback"
+      process.env.AUTH0_CALLBACK_URL || "http://localhost:3000/callback"
   },
   function (accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
@@ -69,7 +70,7 @@ if (app.get('env') === 'production') {
   // Ref: https://github.com/auth0/passport-auth0/issues/70#issuecomment-480771614
   // Ref: https://www.npmjs.com/package/express-session#cookiesecure
   // app.set('trust proxy', 1);
-  
+
   sess.cookie.secure = true; // serve secure cookies, requires https
 }
 
@@ -97,6 +98,8 @@ app.use('/', authRouter);
 app.use('/', indexRouter);
 app.use('/', homeRouter);
 app.use('/', cr8projRouter);
+app.use('/', projectRouter);
+
 
 
 // Catch 404 and forward to error handler

@@ -3,6 +3,7 @@
 
 <head>
 	<%- include ('confg/head/navbar') %>
+	<%- include ('confg/head/project') %>
 
 </head>
 
@@ -12,12 +13,15 @@
 		<%- include ('confg/topbar') %>
 		<%- include ('confg/footer') %>
 
-		<main class='main'>
-			<%- include ('partials/create') %>
+		<main class="main">
+			<%- include ('partials/project'.concat(i)) %>
 		</main>
+
+
 	</div>
 
 </body>
 <%- include ('confg/script/navbar') %>
+<%- include ('confg/script/project') %>
 
 </html>
