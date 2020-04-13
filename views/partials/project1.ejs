@@ -4,7 +4,30 @@
       <div class="main-header__welcome-title text-light">Welcome to <strong><%= rows[1][5] %></strong>,<strong
           style='color:yellow'> User Name</strong></div>
 
-      <div class="main-header__welcome-subtitle text-light">Project Code:<strong> <%= rows[1][2] %></strong></div>
+      <div class="main-header__welcome-subtitle text-light">
+        <div class="header__projectINFO">Project Code:<strong> <%= rows[1][2] %></strong>
+          <div class="dropdown">
+            <ul class="dropdown__list">
+              <li class="dropdown__list-item">
+                <span class="dropdown__icon"><i class="far fa-user"></i></span>
+                <span class="dropdown__title"> <%= rows[1][0] %></span>
+              </li>
+              <li class="dropdown__list-item">
+                <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
+                <span class="dropdown__title"><%= rows[1][1] %></span>
+              </li>
+              <li class="dropdown__list-item">
+                <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
+                <span class="dropdown__title"><%= rows[1][3] %></span>
+              </li>
+              <li class="dropdown__list-item">
+                <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
+                <span class="dropdown__title"><%= rows[1][4] %></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -14,8 +37,20 @@
       <div class="quickview__item">
         <div class="quickview__item-total">41</div>
         <div class="quickview__item-description">
-          <i class="far fa-calendar-alt"></i>
-          <span class="text-light">Sheet Links</span>
+          <div class="header__projectINFO"> <i class="far fa-calendar-alt"></i>
+            <span class="text-light">Sheet Links</span>
+            <div class="dropdown">
+              <ul class="dropdown__sheetlink">
+                <% for(i=1; i<sheetlink.length; i++) { %>
+                <li class="dropdown__sheetlink-item">
+                  <%if (sheetlink[i][0] == rows[1][2]) { %>
+                  <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
+                  <a href=<%= sheetlink[i][1] %> class="dropdown__title"><%= sheetlink[i][2] %>
+                  </a> <% } %>
+                  <% } %></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <div class="quickview__item">
@@ -28,11 +63,3 @@
     </div>
   </div>
 </div>
-
-
-<% for(i=1; i<rows.length; i++) { %>
-<a href=<%='project'.concat(i) %>>
-  <li class="subList__item" id=<%='project'.concat(i) %>>
-    <%= rows[1][i] %></li>
-  <% } %>
-</a>

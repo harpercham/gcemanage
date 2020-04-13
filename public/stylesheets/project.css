@@ -40,6 +40,24 @@ a {
   overflow-y: hidden;
 }
 
+.header__projectINFO {
+  position: relative;
+  cursor: pointer;
+}
+
+.header__avatar:after {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: none;
+  border-left: 2px solid #777;
+  border-bottom: 2px solid #777;
+  transform: rotate(-45deg) translateY(-50%);
+  top: 50%;
+  right: -18px;
+}
+
 .main {
   grid-area: main;
   background-color: #EAEDF1;
@@ -103,7 +121,7 @@ a {
 }
 .quickview__item-description {
   font-size: 16px;
-  text-align: center;
+  text-align: left;
 }
 
 .main-overview {
@@ -367,6 +385,21 @@ a {
   min-width: 0;
 }
 
+.dropdown__sheetlink {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.dropdown__sheetlink-item {
+  width: 75%;
+  padding: 12px 24px;
+  padding-right: 200%;
+  color: #777;
+  text-transform: capitalize;
+}
+.dropdown__sheetlink-item:hover {
+  color: rgba(233, 13, 13, 0.8);
+}
 
 
 @media only screen and (min-width: 46.875em) {

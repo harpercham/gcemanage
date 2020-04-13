@@ -86,18 +86,6 @@ a {
   height: 35px;
   cursor: pointer;
 }
-.header__avatar:after {
-  position: absolute;
-  content: "";
-  width: 6px;
-  height: 6px;
-  background: none;
-  border-left: 2px solid #777;
-  border-bottom: 2px solid #777;
-  transform: rotate(-45deg) translateY(-50%);
-  top: 50%;
-  right: -18px;
-}
 
 .dropdown {
   position: absolute;
@@ -133,6 +121,7 @@ a {
 .dropdown__title {
   margin-left: 10px;
 }
+
 .dropdown:before {
   position: absolute;
   content: "";

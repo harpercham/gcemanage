@@ -23,11 +23,17 @@ function toggleClass(el, className) {
   }
 }
 
-// User avatar dropdown functionality
+// User  dropdown functionality
 function setUserDropdownListener() {
   const userAvatar = $('.header__avatar');
+  const projectINFO = $('.header__projectINFO');
 
   userAvatar.on('click', function (e) {
+    const dropdown = $(this).children('.dropdown');
+    toggleClass(dropdown, 'dropdown--active');
+  });
+
+  projectINFO.on('click', function (e) {
     const dropdown = $(this).children('.dropdown');
     toggleClass(dropdown, 'dropdown--active');
   });
