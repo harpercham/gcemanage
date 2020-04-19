@@ -1,21 +1,57 @@
+<!-- /.main__header -->
 <div class="main-header">
   <div class="main-header__intro-wrapper">
     <div class="main-header__welcome">
       <div class="main-header__welcome-title text-light">Welcome to <strong><%= rows[5][5] %></strong>,<strong
           style='color:yellow'> User Name</strong></div>
-
-      <div class="main-header__welcome-subtitle text-light">Project Code:<strong> <%= rows[5][2] %></strong></div>
-
-
-
-
+      <div class="main-header__welcome-subtitle text-light">
+        <div class="header__projectINFO">Project Code:<strong> <%= rows[5][2] %></strong>
+          <div class="dropdown">
+            <ul class="dropdown__list">
+              <li class="dropdown__list-item">
+                <span class="dropdown__icon"><i class="far fa-user"></i></span>
+                <span class="dropdown__title"> <%= rows[5][0] %></span>
+              </li>
+              <li class="dropdown__list-item">
+                <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
+                <span class="dropdown__title"><%= rows[5][1] %></span>
+              </li>
+              <li class="dropdown__list-item">
+                <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
+                <span class="dropdown__title"><%= rows[5][3] %></span>
+              </li>
+              <li class="dropdown__list-item">
+                <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
+                <span class="dropdown__title"><%= rows[5][4] %></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="quickview">
       <div class="quickview__item">
-        <div class="quickview__item-total">41</div>
+        <div class="quickview__item-total">
+          <%if (sheetname.length==null) { %>
+          <%= 0%>
+          <% } else{ %>
+          <%= sheetname.length %>
+          <% } %>
+        </div>
         <div class="quickview__item-description">
-          <i class="far fa-calendar-alt"></i>
-          <span class="text-light">Sheet Links</span>
+          <div class="header__projectINFO"> <i class="far fa-calendar-alt"></i>
+            <span class="text-light">Sheet Links</span>
+            <div class="dropdown">
+              <ul class="dropdown__sheetlink">
+                <% for(i=0; i<sheetname.length; i++) { %>
+                <li class="dropdown__sheetlink-item">
+                  <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
+                  <a href=<%= sheetlink[i] %> class="dropdown__title"><%= sheetname[i] %>
+                  </a>
+                  <% } %></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <div class="quickview__item">
@@ -30,9 +66,43 @@
 </div>
 
 
-<% for(i=1; i<rows.length; i++) { %>
-<a href=<%='project'.concat(i) %>>
-  <li class="subList__item" id=<%='project'.concat(i) %>>
-    <%= rows[1][i] %></li>
-  <% } %>
-</a>
+
+<!-- /.main__overview -->
+<div class="main-overview">
+  <div class="overviewCard">
+    <div class="overviewCard-icon overviewCard-icon--document">
+      <i class="far fa-file-alt"></i>
+    </div>
+    <div class="overviewCard-description">
+      <h3 class="overviewCard-title text-light"> <strong> <%= title1 %> </strong></h3>
+      <p class="overviewCard-subtitle"> <%= content1 %></p>
+    </div>
+  </div>
+  <div class="overviewCard">
+    <div class="overviewCard-icon overviewCard-icon--calendar">
+      <i class="far fa-calendar-check"></i>
+    </div>
+    <div class="overviewCard-description">
+      <h3 class="overviewCard-title text-light"> <strong> <%= title2 %> </strong></h3>
+      <p class="overviewCard-subtitle"><%= content2 %></p>
+    </div>
+  </div>
+  <div class="overviewCard">
+    <div class="overviewCard-icon overviewCard-icon--mail">
+      <i class="far fa-envelope"></i>
+    </div>
+    <div class="overviewCard-description">
+      <h3 class="overviewCard-title text-light"> <strong> <%= title3 %></strong></h3>
+      <p class="overviewCard-subtitle"><%= content3 %></p>
+    </div>
+  </div>
+  <div class="overviewCard">
+    <div class="overviewCard-icon overviewCard-icon--photo">
+      <i class="far fa-file-image"></i>
+    </div>
+    <div class="overviewCard-description">
+      <h3 class="overviewCard-title text-light"> <strong> <%= title4 %></strong></h3>
+      <p class="overviewCard-subtitle"><%= content4 %></p>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,9 @@
+<!-- /.main__header -->
 <div class="main-header">
   <div class="main-header__intro-wrapper">
     <div class="main-header__welcome">
-      <div class="main-header__welcome-title text-light">Welcome to <strong><%= rows[1][5] %></strong>,<strong
+      <div class="main-header__welcome-title text-light">Welcome to <strong><%=i%></strong>,<strong
           style='color:yellow'> User Name</strong></div>
-
       <div class="main-header__welcome-subtitle text-light">
         <div class="header__projectINFO">Project Code:<strong> <%= rows[1][2] %></strong>
           <div class="dropdown">
@@ -28,25 +28,26 @@
           </div>
         </div>
       </div>
-
-
-
-
     </div>
     <div class="quickview">
       <div class="quickview__item">
-        <div class="quickview__item-total">41</div>
+        <div class="quickview__item-total">
+          <%if (sheetname.length==null) { %>
+          <%= 0%>
+          <% } else{ %>
+          <%= sheetname.length %>
+          <% } %>
+        </div>
         <div class="quickview__item-description">
           <div class="header__projectINFO"> <i class="far fa-calendar-alt"></i>
             <span class="text-light">Sheet Links</span>
             <div class="dropdown">
               <ul class="dropdown__sheetlink">
-                <% for(i=1; i<sheetlink.length; i++) { %>
+                <% for(i=0; i<sheetname.length; i++) { %>
                 <li class="dropdown__sheetlink-item">
-                  <%if (sheetlink[i][0] == rows[1][2]) { %>
                   <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
-                  <a href=<%= sheetlink[i][1] %> class="dropdown__title"><%= sheetlink[i][2] %>
-                  </a> <% } %>
+                  <a href=<%= sheetlink[i] %> class="dropdown__title"><%= sheetname[i] %>
+                  </a>
                   <% } %></li>
               </ul>
             </div>
@@ -60,6 +61,48 @@
           <span class="text-light">Forms</span>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- /.main__overview -->
+<div class="main-overview">
+  <div class="overviewCard">
+    <div class="overviewCard-icon overviewCard-icon--document">
+      <i class="far fa-file-alt"></i>
+    </div>
+    <div class="overviewCard-description">
+      <h3 class="overviewCard-title text-light"> <strong> <%= title1 %> </strong></h3>
+      <p class="overviewCard-subtitle"> <%= content1 %></p>
+    </div>
+  </div>
+  <div class="overviewCard">
+    <div class="overviewCard-icon overviewCard-icon--calendar">
+      <i class="far fa-calendar-check"></i>
+    </div>
+    <div class="overviewCard-description">
+      <h3 class="overviewCard-title text-light"> <strong> <%= title2 %> </strong></h3>
+      <p class="overviewCard-subtitle"><%= content2 %></p>
+    </div>
+  </div>
+  <div class="overviewCard">
+    <div class="overviewCard-icon overviewCard-icon--mail">
+      <i class="far fa-envelope"></i>
+    </div>
+    <div class="overviewCard-description">
+      <h3 class="overviewCard-title text-light"> <strong> <%= title3 %></strong></h3>
+      <p class="overviewCard-subtitle"><%= content3 %></p>
+    </div>
+  </div>
+  <div class="overviewCard">
+    <div class="overviewCard-icon overviewCard-icon--photo">
+      <i class="far fa-file-image"></i>
+    </div>
+    <div class="overviewCard-description">
+      <h3 class="overviewCard-title text-light"> <strong> <%= title4 %></strong></h3>
+      <p class="overviewCard-subtitle"><%= content4 %></p>
     </div>
   </div>
 </div>
