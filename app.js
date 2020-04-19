@@ -12,7 +12,14 @@ var authRouter = require('./routes/auth');
 var indexRouter = require('./routes/index');
 var homeRouter = require('./routes/home');
 var cr8projRouter = require('./routes/cr8proj');
-var projectRouter = require('./routes/project');
+var projectRouter1 = require('./routes/project1');
+var projectRouter2 = require('./routes/project2');
+var projectRouter3 = require('./routes/project3');
+var projectRouter4 = require('./routes/project4');
+var projectRouter5 = require('./routes/project5');
+var projectRouter6 = require('./routes/project6');
+var projectRouter7 = require('./routes/project7');
+var projectRouter8 = require('./routes/project8');
 
 dotenv.config();
 
@@ -98,7 +105,14 @@ app.use('/', authRouter);
 app.use('/', indexRouter);
 app.use('/', homeRouter);
 app.use('/', cr8projRouter);
-app.use('/', projectRouter);
+app.use('/', projectRouter1);
+app.use('/', projectRouter2);
+app.use('/', projectRouter3);
+app.use('/', projectRouter4);
+app.use('/', projectRouter5);
+app.use('/', projectRouter6);
+app.use('/', projectRouter7);
+app.use('/', projectRouter8);
 
 
 

@@ -72,11 +72,9 @@ function getNewToken(oAuth2Client, callback) {
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
 
-
-var i = [1, 2, 3, 4, 5, 6, 7, 8]; /**project list */
-i.forEach(projectLIST)
-function projectLIST(i) {
-  function listMajors(auth) {
+var i=[3];
+function listMajors(auth) {
+  
     const sheets = google.sheets({ version: 'v4', auth });
     sheets.spreadsheets.values.get({
       spreadsheetId: '1PCT7qZgOgK4uQo_p_S6LMuafu6MpKcuhdz9NSRzClQI',
@@ -118,7 +116,7 @@ function projectLIST(i) {
             }
           }
         }
-    
+
         //////////////////////////////////////////////////////////////////////google-spreadsheet//////////////////////////////////////////
         const { GoogleSpreadsheet } = require('google-spreadsheet');
         var content = []; var title = [];
@@ -131,10 +129,44 @@ function projectLIST(i) {
         var content7 = []; var title7 = [];
         var content8 = []; var title8 = [];
 
-        async function loadData(callback) {
-
-          for (c = 0; c < SHEETID.length; c++) {
-            if (SHEETID[c] !== null) {
+        function loadData() {
+          ///////async api with iteration////////////////////////////////////////////////////////////////////////////
+          var n = SHEETID.length;
+          async function tryNextURL(c) {
+            console.log('c:' + c);
+            console.log('title1:' + title1);
+            console.log('title2:' + title2);
+            console.log('title3:' + title3);
+            console.log('title4:' + title4);
+            console.log('title5:' + title5);
+            console.log('title6:' + title6);
+            console.log('title7:' + title7);
+            console.log('title8:' + title8);
+            if (c >= n) {
+              respond.render('project',
+                  {
+                    i: i, sheetname: SHEETNAME,
+                    sheetlink: SHEETLINK,
+                    content1: content1,
+                    content2: content2,
+                    content3: content3,
+                    content4: content4,
+                    content5: content5,
+                    content5: content5,
+                    content7: content7,
+                    content8: content8,
+                    title1: title1,
+                    title2: title2,
+                    title3: title3,
+                    title4: title4,
+                    title5: title5,
+                    title6: title6,
+                    title7: title7,
+                    title8: title8,
+                  });
+              return;
+            }
+            if (SHEETID[c] !== null && c < n) {
 
               title = TITLE[c];
               // spreadsheet key is the long id in the sheets URL
@@ -143,7 +175,7 @@ function projectLIST(i) {
               // OR use API key -- only for read-only access to public sheets
               doc.useApiKey(API[c]);//doc1
 
-           
+
               var range = RANGE[c];//range1
               await doc.loadInfo(); // load1
               const sheet = doc.sheetsByIndex[0]; // sheet1&doc1
@@ -173,53 +205,31 @@ function projectLIST(i) {
               if (c == 7) { content8.push(content); title8.push(title) };
 
               content = []; title = [];
+              
+              
+              tryNextURL(c + 1);
+
             }
           }
-          console.log(title4)
-          callback();
+          tryNextURL(0);
         }
-
-        function render() {
-          reslistMajors.render('project',
-            {
-              i: i, sheetname: SHEETNAME,
-              sheetlink: SHEETLINK,
-              content1: content1,
-              content2: content2,
-              content3: content3,
-              content4: content4,
-              content5: content5,
-              content5: content5,
-              content7: content7,
-              content8: content8,
-              title1: title1,
-              title2: title2,
-              title3: title3,
-              title4: title4,
-              title5: title5,
-              title6: title6,
-              title7: title7,
-              title8: title8,
-            })
-        }
-      
-        loadData(render)
-
-        //////////////////////////////////////////////////////////////////////google-spreadsheet//////////////////////////////////////////
+        loadData()
       });
 
     });
-  }
-  // Load client secrets from a local file.
-  var reslistMajors;
-  router.get('/project'.concat(i), secured(), function (req, res, next) {
-    reslistMajors = res;
-    fs.readFile('./routes/credentials.json', (err, content) => {
-      if (err) return console.log('Error loading client secret file:', err);
-      // Authorize a client with credentials, then call the Google Sheets API.
-      authorize(JSON.parse(content), listMajors);
-    });
-  });
+  
+
 }
+// Load client secrets from a local file.
+var respond;
+router.get('/project'.concat(i), secured(), function (req, res, next) {
+respond=res;
+fs.readFile('./routes/credentials.json', (err, content) => {
+  if (err) return console.log('Error loading client secret file:', err);
+  // Authorize a client with credentials, then call the Google Sheets API.
+  authorize(JSON.parse(content), listMajors);
+});
+});
+
 
 module.exports = router;

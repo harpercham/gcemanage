@@ -72,14 +72,9 @@ function getNewToken(oAuth2Client, callback) {
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
 
-
-var i = [1]; /**project list */
+var i=[6];
 function listMajors(auth) {
-  var m = 8;
-  function tryNext(i) {
-    if (i >= m) {
-      return;
-    }
+  
     const sheets = google.sheets({ version: 'v4', auth });
     sheets.spreadsheets.values.get({
       spreadsheetId: '1PCT7qZgOgK4uQo_p_S6LMuafu6MpKcuhdz9NSRzClQI',
@@ -148,6 +143,27 @@ function listMajors(auth) {
             console.log('title7:' + title7);
             console.log('title8:' + title8);
             if (c >= n) {
+              respond.render('project',
+                  {
+                    i: i, sheetname: SHEETNAME,
+                    sheetlink: SHEETLINK,
+                    content1: content1,
+                    content2: content2,
+                    content3: content3,
+                    content4: content4,
+                    content5: content5,
+                    content5: content5,
+                    content7: content7,
+                    content8: content8,
+                    title1: title1,
+                    title2: title2,
+                    title3: title3,
+                    title4: title4,
+                    title5: title5,
+                    title6: title6,
+                    title7: title7,
+                    title8: title8,
+                  });
               return;
             }
             if (SHEETID[c] !== null && c < n) {
@@ -189,29 +205,8 @@ function listMajors(auth) {
               if (c == 7) { content8.push(content); title8.push(title) };
 
               content = []; title = [];
-              router.get('/project'.concat(i), secured(), function (req, res, next) {
-                res.render('project',
-                  {
-                    i: i, sheetname: SHEETNAME,
-                    sheetlink: SHEETLINK,
-                    content1: content1,
-                    content2: content2,
-                    content3: content3,
-                    content4: content4,
-                    content5: content5,
-                    content5: content5,
-                    content7: content7,
-                    content8: content8,
-                    title1: title1,
-                    title2: title2,
-                    title3: title3,
-                    title4: title4,
-                    title5: title5,
-                    title6: title6,
-                    title7: title7,
-                    title8: title8,
-                  });
-              });
+              
+              
               tryNextURL(c + 1);
 
             }
@@ -219,21 +214,22 @@ function listMajors(auth) {
           tryNextURL(0);
         }
         loadData()
-        tryNext(i + 1);
       });
 
     });
-  }
-  tryNext(1);
+  
 
 }
 // Load client secrets from a local file.
+var respond;
+router.get('/project'.concat(i), secured(), function (req, res, next) {
+respond=res;
 fs.readFile('./routes/credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Sheets API.
   authorize(JSON.parse(content), listMajors);
 });
-
+});
 
 
 module.exports = router;
