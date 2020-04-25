@@ -21,6 +21,8 @@ var projectRouter6 = require('./routes/project6');
 var projectRouter7 = require('./routes/project7');
 var projectRouter8 = require('./routes/project8');
 
+var writeRouter = require('./routes/write');
+
 dotenv.config();
 
 // Configure Passport to use Auth0
@@ -113,6 +115,8 @@ app.use('/', projectRouter5);
 app.use('/', projectRouter6);
 app.use('/', projectRouter7);
 app.use('/', projectRouter8);
+
+app.use('/', writeRouter);
 
 
 

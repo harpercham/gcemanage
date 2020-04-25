@@ -3,9 +3,9 @@
   <div class="main-header__intro-wrapper">
     <div class="main-header__welcome">
       <div class="main-header__welcome-title text-light">Welcome to <strong><%= rows[2][5] %></strong>,<strong
-        style='color:yellow'> User Name</strong></div>
+          style='color:yellow'> User Name</strong></div>
       <div class="main-header__welcome-subtitle text-light">
-        <div class="header__projectINFO">Project Code:<strong> <%= rows[2][2] %></strong>
+        <div class="header__projectINFO">Project Code:<strong id='projectCode'><%=rows[2][2]%></strong>
           <div class="dropdown">
             <ul class="dropdown__list">
               <li class="dropdown__list-item">
@@ -43,10 +43,10 @@
             <span class="text-light">Sheet Links</span>
             <div class="dropdown">
               <ul class="dropdown__sheetlink">
-                <% for(i=0; i<sheetname.length; i++) { %>
+                <% for(j=0; j<sheetname.length; j++) { %>
                 <li class="dropdown__sheetlink-item">
                   <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
-                  <a href=<%= sheetlink[i] %> class="dropdown__title"><%= sheetname[i] %>
+                  <a href=<%= sheetlink[j] %> class="dropdown__title"><%= sheetname[j] %>
                   </a>
                   <% } %></li>
               </ul>
@@ -65,8 +65,6 @@
   </div>
 </div>
 
-
-
 <!-- /.main__overview -->
 <div class="main-overview">
   <div class="overviewCard">
@@ -74,7 +72,9 @@
       <i class="far fa-file-alt"></i>
     </div>
     <div class="overviewCard-description">
-      <h3 class="overviewCard-title text-light"> <strong> <%= title1 %> </strong></h3>
+      <h3 class="overviewCard-title text-light" id=<%= 'content'.concat(i,'-',1) %>> <strong> <%= title1 %> </strong>
+        <i class='input' id=<%= 'input'.concat(i,'-',1) %>><i style='color:grey' class="fas fa-keyboard"></i></i>
+      </h3>
       <p class="overviewCard-subtitle"> <%= content1 %></p>
     </div>
   </div>
@@ -83,7 +83,9 @@
       <i class="far fa-calendar-check"></i>
     </div>
     <div class="overviewCard-description">
-      <h3 class="overviewCard-title text-light"> <strong> <%= title2 %> </strong></h3>
+      <h3 class="overviewCard-title text-light" id=<%= 'content'.concat(i,'-',2) %>> <strong> <%= title2 %> </strong>
+        <i class='input' id=<%= 'input'.concat(i,'-',2) %>><i style='color:grey' class="fas fa-keyboard"></i></i>
+      </h3>
       <p class="overviewCard-subtitle"><%= content2 %></p>
     </div>
   </div>
@@ -92,7 +94,9 @@
       <i class="far fa-envelope"></i>
     </div>
     <div class="overviewCard-description">
-      <h3 class="overviewCard-title text-light"> <strong> <%= title3 %></strong></h3>
+      <h3 class="overviewCard-title text-light" id=<%= 'content'.concat(i,'-',3) %>> <strong> <%= title3 %> </strong>
+        <i class='input' id=<%= 'input'.concat(i,'-',3) %>><i style='color:grey' class="fas fa-keyboard"></i></i>
+      </h3>
       <p class="overviewCard-subtitle"><%= content3 %></p>
     </div>
   </div>
@@ -101,8 +105,82 @@
       <i class="far fa-file-image"></i>
     </div>
     <div class="overviewCard-description">
-      <h3 class="overviewCard-title text-light"> <strong> <%= title4 %></strong></h3>
+      <h3 class="overviewCard-title text-light" id=<%= 'content'.concat(i,'-',4) %>> <strong> <%= title4 %> </strong>
+        <i class='input' id=<%= 'input'.concat(i,'-',4) %>><i style='color:grey' class="fas fa-keyboard"></i></i>
+      </h3>
       <p class="overviewCard-subtitle"><%= content4 %></p>
+    </div>
+  </div>
+</div>
+
+
+<!--form box--> 
+<div id="popup1" class="overlay">
+  <div class="popup">
+    <h2>Data Form</h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+      <form action="/input" id='my_form' method='POST' class="form-container">
+        <div>
+          <label for="title"><b>Preferred Title: </b></label>
+          <input type="text" id="title" placeholder="Enter Title" name="title" required>
+        </div>
+        <div>
+          <label for="url"><b>URL: </b></label>
+          <input type="text" id="url" placeholder="Enter URL" name="url" required>
+        </div>
+
+        <div>
+          <label for="sheetname"><b>Sheet Name: </b></label>
+          <input type="text" id="sheetname" placeholder="Enter Sheetname" name="sheetname" required>
+        </div>
+
+        <div>
+          <label for="range"><b>Data Range: </b></label>
+          <input type="text" id="range" placeholder="eg. a1:a1" name="range" required>
+        </div>
+
+        <div>
+          <label for="tabSeq"><b>Tab Sequence: </b></label>
+          <input type="text" id="tabSeq" placeholder="Enter Tab Sequence" name="tabSeq" required>
+        </div>
+
+        <div>
+          <label for="api"><b>API Key<a href='https://developers.google.com/sheets/api/quickstart/js'> (click here)</a>:
+            </b></label>
+          <input type="text" id="api" placeholder="Enter API Key" name="api" required>
+        </div>
+
+        <button type="submit" class="btn submit">Submit</button>
+        <button type="button" class="btn cancel" onclick="location.href='#';">Close</button>
+        <button type="button" class="btn tutorial" onclick="location.href='#tutorial';">Tutorial</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--tutorial box--> 
+<div id="tutorial" class="overlay">
+  <div class="popup">
+    <h2>Tutorial</h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+      <form class="form-container">
+
+        <div>
+          <label for="tutorial1"><a href='https://support.wix.com/en/article/setting-your-google-spreadsheet-as-public'>1. Make Spreadsheet as Public</a></label>
+        </div>
+
+        <div>
+          <label for="tutorial2"><a href='http://gcesg.myqnapcloud.com:8080/share.cgi/form%20field.png?ssid=03CP3yH&fid=03CP3yH&open=normal&ep='>2. Form Field</a></label>
+        </div>
+
+        <div>
+          <label for="tutorial3"><a href='http://gcesg.myqnapcloud.com:8080/share.cgi/api%20key%20generation.png?ssid=05Yn6yQ&fid=05Yn6yQ&open=normal&ep='>3. API Key Generation</a></label>
+        </div>
+
+        <button type="button" class="btn cancel" onclick="location.href='#';">Close</button>
+      </form>
     </div>
   </div>
 </div>
